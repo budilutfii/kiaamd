@@ -1,3 +1,4 @@
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 require('./config')
 const {
   useSingleFileAuthState,
@@ -69,6 +70,7 @@ global.isInit = !fs.existsSync(authFile)
 const { state, saveState } = useSingleFileAuthState(global.authFile)
 
 const connectionOptions = {
+  version: [2, 2204, 13],
   printQRInTerminal: true,
   auth: state,
   logger: P({ level: 'debug' })
